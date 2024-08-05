@@ -23,6 +23,14 @@ public class User implements Serializable {
     @Column(length = 40)
     private String email;
 
+    public User(){}
+    public User(String firstName, String lastName, Integer age, String email) {
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.age = age;
+        this.email = email;
+    }
+
     public long getID() {
         return ID;
     }
