@@ -7,6 +7,12 @@
     <<meta charset="UTF-8">
     <title>"Список пользователей"</title>
 
+    <script type="text/javascript">
+        window.addEventListener('beforeunload', function() {
+            navigator.sendBeacon('/closePage', JSON.stringify({
+                message: 'Работа со списком приостановлена.' }));
+        });
+    </script>
     <style>
         body {
             font-family: "Georgia",cursive;

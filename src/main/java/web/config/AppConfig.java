@@ -3,7 +3,6 @@ package web.config;
 import java.util.Objects;
 import java.util.Properties;
 import javax.sql.DataSource;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
@@ -31,10 +30,10 @@ import org.thymeleaf.spring6.view.ThymeleafViewResolver;
 @EnableWebMvc
 @ComponentScan(basePackages = "web")
 public class AppConfig implements WebMvcConfigurer {
+
     private final ApplicationContext applicationContext;
     private final Environment env;
 
-    @Autowired
     public AppConfig(ApplicationContext applicationContext, Environment env) {
         this.applicationContext = applicationContext;
         this.env = env;
