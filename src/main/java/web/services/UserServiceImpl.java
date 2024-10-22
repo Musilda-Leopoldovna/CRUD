@@ -21,12 +21,12 @@ public class UserServiceImpl implements UserService {
         userDao.saveUser(user);
     }
 
-    public void removeUser(Long id) {
-        userDao.deleteUserDaoById(id);
+    public void removeUserById(Long ID) {
+        userDao.deleteUserDaoById(ID);
     }
 
     public void changeUser(User updUser) {
-        userDao.changeUserDaoById(updUser);
+        userDao.changeUserDao(updUser);
     }
 
     public User getUserById(Long userId) {

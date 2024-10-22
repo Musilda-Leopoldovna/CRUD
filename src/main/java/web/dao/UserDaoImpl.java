@@ -18,11 +18,9 @@ public class UserDaoImpl implements UserDao {
         em.persist(user);
     }
 
-    public void deleteUserDaoById(Long userId) {
-        User user = em.find(User.class, userId);
-        if (user != null) {
-            this.em.remove(user);
-        }
+    public void deleteUserDaoById(Long ID) {
+        User user = em.find(User.class, ID);
+        em.remove(user);
     }
 
     @Transactional(readOnly = true)
@@ -34,8 +32,7 @@ public class UserDaoImpl implements UserDao {
         return em.find(User.class, userId);
     }
 
-    public void changeUserDaoById(User updUser) {
+    public void changeUserDao(User updUser) {
         em.merge(updUser);
     }
 }
-

@@ -14,13 +14,13 @@ public class User implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long ID;
-    @Column(length = 20)
+    @Column
     private String firstName;
-    @Column(length = 40)
+    @Column
     private String lastName;
-    @Column(length = 3)
+    @Column
     private Integer age;
-    @Column(length = 40)
+    @Column
     private String email;
 
     public User(){}

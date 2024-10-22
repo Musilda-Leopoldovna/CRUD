@@ -1,18 +1,12 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:th="http://www.thymeleaf.org"
-      lang="java">
+      lang="ru">
 
 <head>
-    <<meta charset="UTF-8">
+    <meta charset="UTF-8">
     <title>"Список пользователей"</title>
 
-    <script type="text/javascript">
-        window.addEventListener('beforeunload', function() {
-            navigator.sendBeacon('/closePage', JSON.stringify({
-                message: 'Работа со списком приостановлена.' }));
-        });
-    </script>
     <style>
         body {
             font-family: "Georgia",cursive;
@@ -22,7 +16,7 @@
             color: #3366CC;
         }
         h5 {
-            font-style: italic;
+            font-style: normal;
             color: #3366CC;
         }
         table {
@@ -119,7 +113,7 @@
         <th>updating</th>
     </tr>
     <tbody>
-    <tr th:name="newUser" th:each="user : ${userList}">
+    <tr th:name="user" th:each="user : ${userList}">
         <td><span th:text="${user.ID}"> </span></td>
         <td><span th:text="${user.firstName}"> </span></td>
         <td><span th:text="${user.lastName}"> </span></td>
@@ -131,7 +125,7 @@
                 <input type="submit" name="update" value="upd" title="редактировать" />
             </form>
             <form class="inline-form" th:action="@{/delete}" method="post">
-                <input type="hidden" name="deleteById" th:value="${user.ID}" />
+                <input type="hidden" name="deleteId" th:value="${user.ID}" />
                 <input type="submit" name="delete" value="del" title="удалить" />
             </form>
         </td>
@@ -142,7 +136,7 @@
     <form th:action="@{/addUser}" method="post">
         <input type="text" size="20" maxlength="20" name="firstName" id="firstName" placeholder="Имя" th:value="${user.firstName}" />
         <input type="text" size="40" maxlength="40" name="lastName" id="lastName" placeholder="Фамилия" th:value="${user.lastName}" />
-        <input type="text" size="5" maxlength="3" name="age" id="age" placeholder="Возраст" th:value="${user.age != null ? user.age : ''}" />
+        <input type="text" size="5" maxlength="2" name="age" id="age" placeholder="Возраст" th:value="${user.age != null ? user.age : ''}" />
         <input type="text" size="40" maxlength="40" name="email" id="email" placeholder="Эл.адрес" th:value="${user.email}" />
         <br />
         <br />
@@ -155,7 +149,7 @@
         <input type="hidden" name="ID" th:value="${editUser.ID}" />
         <input type="text" size="20" maxlength="20" name="firstName" placeholder="Имя" th:value="${editUser.firstName}" />
         <input type="text" size="40" maxlength="40" name="lastName" placeholder="Фамилия" th:value="${editUser.lastName}" />
-        <input type="text" size="5" maxlength="3" name="age" placeholder="Возраст" th:value="${editUser.age != null ? editUser.age : ''}" />
+        <input type="text" size="5" maxlength="2" name="age" placeholder="Возраст" th:value="${editUser.age != null ? editUser.age : ''}" />
         <input type="text" size="40" maxlength="40" name="email" placeholder="Эл.адрес" th:value="${editUser.email}" />
         <br />
         <br />

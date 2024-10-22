@@ -4,13 +4,13 @@ import java.util.List;
 import web.model.User;
 
 public interface UserDao {
-    void saveUser(User var1);
+    void saveUser(User user);
 
-    void deleteUserDaoById(Long var1);
+    void deleteUserDaoById(Long ID);
 
-    void changeUserDaoById(User var1);
+    void changeUserDao(User user);
 
     List<User> allUsers();
 
-    User findUserById(Long var1);
+    User findUserById(Long ID);
 }

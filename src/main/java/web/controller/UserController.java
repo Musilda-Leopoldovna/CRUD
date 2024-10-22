@@ -1,7 +1,7 @@
 package web.controller;
 
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.ModelMap;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -18,8 +18,8 @@ public class UserController {
     }
 
     @GetMapping("/")
-    public String getUsersList(@RequestParam(value = "editId",required = false) Long editId,
-                               @ModelAttribute User user, ModelMap model) {
+    public String getUsersList(@ModelAttribute User user, Model model,
+                               @RequestParam(value = "editId", required = false) Long editId) {
         if (editId != null) {
             User editUser = service.getUserById(editId);
             model.addAttribute("editUser", editUser);
@@ -29,22 +29,22 @@ public class UserController {
     }
 
     @PostMapping("/addUser")
-    public String addUser(User user, ModelMap model) {
-        this.service.addNewUser(user);
-        model.addAttribute("userList", service.getListOfUsers());
-        return "index";
-    }
-
-    @PostMapping("/delete")
-    public String deleteUser(@RequestParam("deleteById") Long ID) {
-        service.removeUser(ID);
+    public String addUser(@ModelAttribute User user) {
+        service.addNewUser(user);
         return "redirect:/";
     }
 
     @PostMapping("/update")
-    public String updateUser(User user, ModelMap model) {
-        this.service.changeUser(user);
-        model.addAttribute("userList", service.getListOfUsers());
-        return "index";
+    public String updateUser(@ModelAttribute User user) {
+        service.changeUser(user);
+        return "redirect:/";
+    }
+
+    @PostMapping("/delete")
+    public String deleteUser(@RequestParam(value = "deleteId", required = false) Long deleteId) {
+        if (deleteId != null) {
+            service.removeUserById(deleteId);
+        }
+        return "redirect:/";
     }
 }

@@ -3,6 +3,7 @@ package web.config;
 import java.util.Objects;
 import java.util.Properties;
 import javax.sql.DataSource;
+
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
@@ -96,7 +97,7 @@ public class AppConfig implements WebMvcConfigurer {
 
     public void configureViewResolvers(ViewResolverRegistry registry) {
         ThymeleafViewResolver resolver = new ThymeleafViewResolver();
-        resolver.setContentType("text/html; charset=UTF-8");
+        resolver.setCharacterEncoding("UTF-8");
         resolver.setTemplateEngine(templateEngine());
         registry.viewResolver(resolver);
     }
