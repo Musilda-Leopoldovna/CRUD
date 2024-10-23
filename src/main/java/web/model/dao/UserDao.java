@@ -1,7 +1,7 @@
-package web.dao;
+package web.model.dao;
 
 import java.util.List;
-import web.model.User;
+import web.model.entity.User;
 
 public interface UserDao {
     void saveUser(User user);

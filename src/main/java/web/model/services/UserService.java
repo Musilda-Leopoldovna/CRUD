@@ -1,7 +1,7 @@
-package web.services;
+package web.model.services;
 
 import java.util.List;
-import web.model.User;
+import web.model.entity.User;
 
 public interface UserService {
     void addNewUser(User user);
